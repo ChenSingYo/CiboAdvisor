@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="/CSS/bootstrap.css">
+  <title>CiboAdvisor</title>
+</head>
+<body>
+  <header>
+    <!-- navigation -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+            width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
+          CiboAdvisor
+        </a>
+      </div>
+    </nav>
+    <!-- banner -->
+    <div class="banner"></div>
+  </header>
+  <!--  "body" = partial templates-->
+  {{{ body }}}
+
+  <!-- footer -->
+  <footer class="footer-section" id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2020 CiboAdvisor</p>
+    </div>
+  </footer>
+
+  <script src="/JS/font-awesome-all.js"></script>
+  <script src="/JS/popper.min.js"></script>
+  <script src="/JS/jquery-3.5.1.js"></script>
+  <script src="/JS/bootstrap.js"></script>
+
+</body>
+</html>
