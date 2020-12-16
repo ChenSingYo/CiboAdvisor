@@ -27,7 +27,7 @@ Express-Handlebars
 Clone repository to your local computer
 
 ```bash
-$ git clone https://github.com/ShihTingJustin/FeedYourSoul.git
+$ git clone https://github.com/ChenSingYo/CiboAdvisor.git
 ```
 
 Install [npm](https://www.npmjs.com/) and execute
