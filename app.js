@@ -23,8 +23,11 @@ app.get('/', (req, res) => {
 // main page route after search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword;
-  const getRestaurantsFromSearch = restaurantList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.description.toLowerCase().includes(keyword.toLowerCase())
+  const getRestaurantsFromSearch = restaurantList.results.filter( ({google_map,phone,...rest}) => {
+    // omit google_map,phone, pick others fields in restaurant. Take only string type value in the field. combine all string[] as a long string.
+    const searchingStr = Object.values(rest).filter( (value)=>typeof value === 'string' ).join('');
+    // use regexp to test the keyword is exist in searchingStr( case insensitive ). 
+    return new RegExp(keyword,'ig').test(searchingStr);
   })
   res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
 })
