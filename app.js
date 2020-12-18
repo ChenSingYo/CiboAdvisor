@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // require packages used in the project
 const express = require('express')
 const app = express()
@@ -23,11 +24,9 @@ app.get('/', (req, res) => {
 // main page route after search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const getRestaurantsFromSearch = restaurantList.results.filter( ({google_map,phone,...rest}) => {
-    // omit google_map,phone, pick others fields in restaurant. Take only string type value in the field. combine all string[] as a long string.
-    const searchingStr = Object.values(rest).filter( (value)=>typeof value === 'string' ).join('')
-    // use regexp to test the keyword is exist in searchingStr( case insensitive )
-    return new RegExp(keyword,'ig').test(searchingStr)
+  const getRestaurantsFromSearch = restaurantList.results.filter(({ name, name_en, category, location, description }) => {
+    const searchingStr = Object.values({ name, name_en, category, location, description })
+    return new RegExp(keyword, 'ig').test(searchingStr)
   })
   res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
 })
@@ -37,7 +36,7 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
   const checkRestaurant = restaurantList.results.find(
     restaurant => restaurant.id.toString() === req.params.restaurant_id
   )
-  res.render('show', {checkRestaurant})
+  res.render('show', { checkRestaurant })
 })
 
 // start and listen on the Express server
