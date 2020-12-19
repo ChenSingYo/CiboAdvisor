@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const getRestaurantsFromSearch = restaurantList.results.filter(({ name, name_en, category, location, description }) => {
-    const searchingStr = Object.values({ name, name_en, category, location, description })
+    const searchingStr = [name, name_en, category, location, description].join('')
     return new RegExp(keyword, 'ig').test(searchingStr)
   })
   res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
