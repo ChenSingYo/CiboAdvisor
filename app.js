@@ -1,13 +1,31 @@
 /* eslint-disable camelcase */
+
+// use mongoose to connect mongodb
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/restaurants', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
 // require packages used in the project
 const express = require('express')
 const app = express()
 const port = 3000
-
 // require express-handlebars here
 const exphbs = require('express-handlebars')
 // require JSON data
 const restaurantList = require('./restaurant.json')
+
+// connect to mongodb
+const db = mongoose.connection
+// check if get error from mongodb
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+// check if connected successfully
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
