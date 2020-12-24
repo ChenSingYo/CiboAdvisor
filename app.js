@@ -63,11 +63,12 @@ app.get('/search', (req, res) => {
 })
 
 // use params to get dynamic route, pass object to show.handlebars
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const checkRestaurant = restaurantList.find(
-    restaurant => restaurant.id.toString() === req.params.restaurant_id
-  )
-  res.render('show', { checkRestaurant })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return restaurantList.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 // start and listen on the Express server

@@ -1,37 +1,35 @@
-<h1 class="mb-1 restaurant-show-title">{{checkRestaurant.name}}</h1>
+<h1 class="mb-1 restaurant-show-title">{{restaurant.name_en}}</h1>
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-10 mx-auto">
-      <p class="mb-1">
-        <span class="text-secondary">
-          <i class="fas fa-utensils pr-2"></i>
-          類別：
-        </span>
-        {{checkRestaurant.category}}
+    <div class="col-4 col-md-5 offset-1 mr-3">
+      <h2 class="mb1 font-weight-bold">{{restaurant.name}}</h2>
+      <p class="mb-5">
+        {{restaurant.description}}
       </p>
       <p class="mb-1">
         <span class="text-secondary">
-          <i class="fas fa-map-marker-alt pr-2"></i>
-          地址：
+          <i class="fas fa-utensils pr-2"></i>
         </span>
-        {{checkRestaurant.location}}
-        <a href="{{checkRestaurant.google_map}}" class="text-secondary" target="_blank">
-          <i class="fas fa-location-arrow pr-2 fa-xs"></i>
+        &ensp;{{restaurant.category}}
+      </p>
+      <p class="mb-1">
+        <a href="{{restaurant.google_map}}" class="text-secondary text-decoration-none" target="_blank">
+        <i class="fas fa-location-arrow pr-2 fa-1x"></i>&ensp;{{restaurant.location}}
         </a>
       </p>
       <p class="mb-1">
         <span class="text-secondary">
-          <i class="fas fa-mobile-alt pr-2"></i>
-          電話：
+          <i class="fas fa-phone"></i>
         </span>
-        {{checkRestaurant.phone}}
+        &ensp;{{restaurant.phone}}
       </p>
-      <p class="mb-5">
-        {{checkRestaurant.description}}
-      </p>
-      <img class="rounded mx-auto d-block mb-4 w-100"
-        src="{{checkRestaurant.image}}" alt="{{checkRestaurant.name_en}}"
-        style="max-width: 600px;">
     </div>
+    <div class="col-8 col-md-6 mb-5">
+      <img class="rounded pb-4 ml-3"
+        src="{{restaurant.image}}" alt="{{restaurant.name_en}}"
+        style="max-width: 500px;">
+    </div>
+
+
   </div>
 </div>
