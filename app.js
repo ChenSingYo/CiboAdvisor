@@ -13,8 +13,8 @@ const app = express()
 const port = 3000
 // require express-handlebars here
 const exphbs = require('express-handlebars')
-// require JSON data
-const restaurantList = require('./restaurant.json')
+// require data model
+const restaurantList = require('./models/restaurantModel.js')
 
 // connect to mongodb
 const db = mongoose.connection
@@ -36,22 +36,35 @@ app.use(express.static('public'))
 
 // main page route
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  restaurantList.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
 
 // main page route after search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const getRestaurantsFromSearch = restaurantList.results.filter(({ name, name_en, category, location, description }) => {
-    const searchingStr = [name, name_en, category, location, description].join('')
-    return new RegExp(keyword, 'ig').test(searchingStr)
-  })
-  res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
+  restaurantList.find()
+    .lean()
+    .then(restaurants => {
+      // search content by name, name_en, category, location, description
+      const getRestaurantsFromSearch = restaurants.filter(({ name, name_en, category, location, description }) => {
+        const searchingStr = [name, name_en, category, location, description].join('')
+        return new RegExp(keyword, 'ig').test(searchingStr)
+      })
+      if (getRestaurantsFromSearch.length === 0) {
+        res.render('notFound', { keyword: keyword })
+      } else {
+        res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
+      }
+    })
+    .catch(error => console.error(error))
 })
 
 // use params to get dynamic route, pass object to show.handlebars
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  const checkRestaurant = restaurantList.results.find(
+  const checkRestaurant = restaurantList.find(
     restaurant => restaurant.id.toString() === req.params.restaurant_id
   )
   res.render('show', { checkRestaurant })
