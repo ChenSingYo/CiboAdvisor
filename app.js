@@ -15,23 +15,21 @@ const port = 3000
 const exphbs = require('express-handlebars')
 // require data model
 const restaurantList = require('./models/restaurantModel.js')
-
 // use epxress-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
 // connect to mongodb
 const db = mongoose.connection
-// check if get error from mongodb
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-// check if connected successfully
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
+// check mongodb's status
+db.on('error', () => { console.log('mongodb error!') })
+db.once('open', () => { console.log('mongodb connected!') })
 
-// setting template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+// import handlebars 'is' helper
+const helpers = require('handlebars-helpers')()
+const helperIs = helpers.is()
+
+// setting template engine and handlebars-helpers
+app.engine('handlebars', exphbs({ helpers: helperIs, defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // setting static files
@@ -52,6 +50,15 @@ app.get('/restaurants/:id', (req, res) => {
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.log(error))
+})
+
+// create new data
+app.get('/new', (req, res) => res.render('new'))
+app.post('/new', (req, res) => {
+  const restaurant = req.body
+  restaurantList.create(restaurant)
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
 })
 
 // route to edit page
