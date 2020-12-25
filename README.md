@@ -34,6 +34,7 @@ Install [npm](https://www.npmjs.com/) and execute
 
 ```bash
 $ npm install 14.15.1
+$ npm run seed
 $ npm run start     ..will automatically run 'node app.js'
 ```
 
@@ -41,6 +42,7 @@ or
 
 ```bash
 $ npm -i nodemon
+$ npm run seed
 $ npm run dev       ..will automatically run 'nodemon app.js'
 ```
 
