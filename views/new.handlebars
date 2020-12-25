@@ -1,69 +1,68 @@
-{{!-- <h1 class="mt-3 restaurant-show-title text-warning">Editing: {{restaurant.name_en}}</h1>
+<h1 class="mt-3 restaurant-show-title text-light">New Restaurant</h1>
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2 mb-5">
-      <form method="POST" action="/restaurants/{{restaurant._id}}" class="was-validated">
+      <form method="POST" action="/restaurants/new" class="">
         <div class="row">
           <div class="col-md-5 form-group mb-3">
             <label class="text-muted font-weight-light">餐廳名稱</label>
-            <input class="form-control" type="text" name="name" id="name" placeholder="" value="{{restaurant.name}}" required>
+            <input class="form-control" type="text" name="name" placeholder="e.g. 關懷披薩" required>
           </div>
           <div class="col-md-4 form-group mb-3">
             <label for="restaurant-name_en" class="text-muted font-weight-light">Name</label>
-            <input class="form-control" type="text" name="name_en" id="restaurant-name_en" placeholder="" value="{{restaurant.name_en}}" required>
+            <input class="form-control" type="text" name="name_en" placeholder="e.g. Cura Pizza" required>
           </div>
           <div class="col-md-3 form-group mb-3">
             <label for="restaurant-category" class="text-muted font-weight-light">Category</label>
             <div>
-              <select class="form-control" id="restaurant-category" name="category" id="restaurant-category" required>
-                <option value="中式料理" {{#is restaurant.category "中式料理"}} selected {{/is}}>中式料理</option>
-                <option value="台灣小吃" {{#is restaurant.category "台灣小吃"}} selected {{/is}}>台灣小吃</option>
-                <option value="東南亞料理" {{#is restaurant.category "東南亞料理"}} selected {{/is}}>東南亞料理</option>
-                <option value="中東料理" {{#is restaurant.category "中東料理"}} selected {{/is}}>中東料理</option>
-                <option value="日韓料理" {{#is restaurant.category "日韓料理"}} selected {{/is}}>日韓料理</option>
-                <option value="歐式餐廳" {{#is restaurant.category "歐式餐廳"}} selected {{/is}}>歐式餐廳</option>
-                <option value="美式餐廳" {{#is restaurant.category "美式餐廳"}} selected {{/is}}>美式餐廳</option>
-                <option value="蔬食餐廳" {{#is restaurant.category "蔬食餐廳"}} selected {{/is}}>蔬食餐廳</option>
-                <option value="速食店" {{#is restaurant.category "速食店"}} selected {{/is}}>速食店</option>
-                <option value="早午餐" {{#is restaurant.category "早午餐"}} selected {{/is}}>早午餐</option>
-                <option value="咖啡廳" {{#is restaurant.category "咖啡廳"}} selected {{/is}}>咖啡廳</option>
-                <option value="酒吧" {{#is restaurant.category "酒吧"}} selected {{/is}}>酒吧</option>
-                <option value="其他" {{#is restaurant.category "其他"}} selected {{/is}}>其他</option>
+              <select class="form-control" name="category" required>
+                <option value="">select...</option>
+                <option value="中式料理">中式料理</option>
+                <option value="台灣小吃">台灣小吃</option>
+                <option value="東南亞料理">東南亞料理</option>
+                <option value="中東料理">中東料理</option>
+                <option value="日韓料理">日韓料理</option>
+                <option value="歐式餐廳">歐式餐廳</option>
+                <option value="美式餐廳">美式餐廳</option>
+                <option value="蔬食餐廳">蔬食餐廳</option>
+                <option value="速食店">速食店</option>
+                <option value="早午餐">早午餐</option>
+                <option value="咖啡廳">咖啡廳</option>
+                <option value="酒吧">酒吧</option>
+                <option value="其他">其他</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 form-group mb-3">
             <label for="restaurant-address" class="text-muted font-weight-light">Address</label>
-            <input class="form-control" type="text" name="location" id="restaurant-address" placeholder="" value="{{restaurant.location}}" required>
+            <input class="form-control" type="text" name="location" placeholder="e.g. 108台北市萬華區東園街68-9號" required>
           </div>
           <div class="col-md-4 form-group mb-3">
             <label for="restaurant-phone" class="text-muted font-weight-light">Phone</label>
-            <input class="form-control" type="text" name="phone" id="restaurant-phone" placeholder="" value="{{restaurant.phone}}" required>
+            <input class="form-control" type="text" name="phone" placeholder="e.g. 02 2339 5877" required>
           </div>
           <div class="col-md-2 form-group mb-3">
             <label class="text-muted font-weight-light">Rating</label>
-            <input class="form-control" type="text" name="rating" placeholder="" value="{{restaurant.rating}}" required>
+            <input class="form-control" type="text" name="rating" placeholder="5.0" required>
           </div>        
           <div class="col-md-12 form-group mb-3" >
             <label for="restaurant-about" class="text-muted font-weight-light">About</label>
-            <textarea class="form-control" rows="5" name="description" id="restaurant-about" placeholder="" required>{{restaurant.description}}</textarea>
+            <textarea class="form-control" rows="5" name="description" placeholder="e.g. 我們遵循那不勒斯披薩協會規範，使用坎帕尼亞省生產的麵粉、莫札瑞拉起司、去皮番茄、天然海鹽等進口食材重現當地美味。傳統的那不勒斯披薩( Vera Pizza Napoletana ) 麵團需遵循協會製作流程。以進口重量級雙臂攪拌機打麵團，模仿手工揉製方式，增加麵團口感與嚼勁。以低溫發酵長達15小時以上使酵母消化糖與碳水化合物產生美麗的氣孔，烤出來的披薩口感Q彈，不同於市面上扎實或薄脆型的披薩。" required></textarea>
           </div>   
           <div class="col-md-12 form-group mb-3">
             <label for="restaurant-Image_Url" class="text-muted font-weight-light">Image Url</label>
-            <input class="form-control" type="text" name="image" id="restaurant-Image_Url" placeholder="" value="{{restaurant.image}}" required>
+            <input class="form-control" type="text" name="image" placeholder="https://farm5.static.flickr.com/4849/46284386622_a735526532_o.jpg" required>
           </div>
           <div class="col-md-12 form-group mb-4">
             <label for="restaurant-google_map" class="text-muted font-weight-light">Google Map Url</label>
-            <input class="form-control" type="text" name="google_map" id="restaurant-google_map" placeholder="" value="{{restaurant.google_map}}" required>
+            <input class="form-control" type="text" name="google_map" placeholder="https://goo.gl/maps/o5xeKgNthHv6U9LN7" required>
           </div>
-          <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
-            <a href="/restaurants/{{restaurant._id}}" type="button" class="btn btn-outline-secondary">BACK</a>
-          </div>     
-          <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
-            <button type="submit" class="btn btn-outline-success">SAVE</button>
-          </div>          
+          <div class="col-md-12 form-group mb-5 d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">SAVE</button>
+            <a href="/" type="button" class="btn btn-outline-secondary">Forget It</a>
+          </div>   
         </div>
       </form>
     </div>
   </div>
-</div> --}}
+</div>

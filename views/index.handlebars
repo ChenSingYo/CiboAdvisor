@@ -12,7 +12,9 @@
           </div>
         </div>
       </form>
-      <a href="/restaurants/new" id="create-btn" class="btn mb-3 text-danger" aria-pressed="true">Got new spot? Fuiyoh! Just come to add it here :D</a>
+        <a href="/new">
+          <button type="button" class="btn">Got New Spot?</button>
+        </a>
     </div>
   </div>
 </div>
@@ -22,26 +24,27 @@
   <div class="row">
     {{#each restaurants}}
     <div class="col-sm-6 col-md-4 col-12 mx-auto">
-      <div class="card-columns">
-        <div class="card mb-3">
-          <a href="/restaurants/{{this._id}}" class="text-secondary"> 
+      <a href="/restaurants/{{this._id}}" class="text-secondary">
+        <div class="card-columns">
+          <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
-          <div class="card-body p-3">
-            <h6 class="card-title text-dark mb-1">{{this.name}}</h6>
-            <div class="restaurant-category mb-1">
-              <i class="fas fa-utensils pr-2"></i> {{this.category}}
-            </div>
-            <span class="tag">
-              {{this.rating}}
-              <i class="fas fa-star"></i>
-            </span>
-            <div class="row d-flex justify-content-end">
-              <button type="button" class="btn col-2" data-toggle="modal" data-target="#deleteModal-{{this._id}}"><i class="fas fa-trash-alt fa-lg text-muted"></i></button>
+            <div class="card-body p-3">
+              <h6 class="card-title text-dark mb-1">{{this.name}}</h6>
+              <div class="restaurant-category mb-1">
+                <i class="fas fa-utensils pr-2"></i> {{this.category}}
+              </div>
+              <span class="tag">
+                {{this.rating}}
+                <i class="fas fa-star"></i>
+              </span>
+              <div class="row d-flex justify-content-end">
+                <a href=""></a>
+                <button type="button" class="btn col-2" data-toggle="modal" data-target="#deleteModal-{{this._id}}"><i class="fas fa-trash-alt fa-lg text-muted"></i></button>
+              </div>
             </div>
           </div>
-          </a>
         </div>
-      </div>
+      </a>
     </div>
     {{/each}}
   </div>

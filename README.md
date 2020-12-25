@@ -1,12 +1,11 @@
 ## **CiboAdvisor**
 
-CiboAdvisor - the restaurant list that includes several nice spots worth to visit in Taipei 
+CiboAdvisor - the restaurant list that includes several nice spots worth to visit in Taiwan
 
 <img width="927" alt="main page" src="https://user-images.githubusercontent.com/69234380/102253198-fcb3d480-3f41-11eb-8acf-3da5c6d65392.png">
 
 
 ## **Features**
-
 
 1. Find restaurants located in Taipei.
 2. Search restaurant by name and it's description.
@@ -25,8 +24,9 @@ Express-Handlebars
 
 Handlebars-Helpers
 
-## **Getting Started**
+Mongoose
 
+## **Getting Started**
 
 Clone repository to your local computer
 
@@ -64,7 +64,6 @@ http://localhost:3000
 
 ## **Built With**
 
-
 Node.js 14.15.1
 
 Express 4.17.1
@@ -72,3 +71,5 @@ Express 4.17.1
 Express-Handlebars 5.2.0
 
 Handlebars-Helpers 0.10
+
+Mongoose v5.11.8
