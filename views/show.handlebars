@@ -17,19 +17,23 @@
         <i class="fas fa-location-arrow pr-2 fa-1x"></i>&ensp;{{restaurant.location}}
         </a>
       </p>
-      <p class="mb-1">
+      <p class="mb-5">
         <span class="text-secondary">
           <i class="fas fa-phone"></i>
         </span>
         &ensp;{{restaurant.phone}}
       </p>
+      <div class="d-inline-flex mt-5">
+        <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-success btn-sm mx-1" role="button"><i class="fas fa-edit"></i></a>
+        <form action="./restaurants/{{ this._id }}/delete" method="POST" class="">
+          <button type="Submit" class="btn btn-secondary btn-sm mx-1"><i class="fas fa-trash-alt"></i></button>
+        </form>
+      </div>
     </div>
     <div class="col-8 col-md-6 mb-5">
-      <img class="rounded pb-4 ml-3"
+      <img class="rounded shadow ml-3"
         src="{{restaurant.image}}" alt="{{restaurant.name_en}}"
         style="max-width: 500px;">
     </div>
-
-
   </div>
 </div>
