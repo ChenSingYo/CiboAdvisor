@@ -2,19 +2,22 @@
 
 // use mongoose to connect mongodb
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurants', {
+mongoose.connect('mongodb://localhost:27017/restaurants', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 
 // require packages used in the project
 const express = require('express')
+const bodyParser = require('body-parser');
 const app = express()
 const port = 3000
 // require express-handlebars here
 const exphbs = require('express-handlebars')
 // require data model
 const restaurantList = require('./models/restaurantModel.js')
+const jsonParser = bodyParser.json()
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // connect to mongodb
 const db = mongoose.connection
@@ -81,10 +84,11 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // edit data
-app.put('/restaurants/:id', (req, res) => {
+app.post('/restaurants/:id',urlencodedParser, (req, res) => {
   const id = req.params.id
-  const update = req.body
-  console.log(update)
+
+  const update =  JSON.parse( JSON.stringify(req.body)) ;
+  console.log(update);
   restaurantList.findByIdAndUpdate(id, update, { new: true })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.error(error))

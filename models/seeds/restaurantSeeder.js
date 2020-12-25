@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const restaurantModel = require('../restaurantModel') // import restaurantModel.js
 const restaurantList = require('./restaurant.json') // import seed data
 
-mongoose.connect('mongodb://localhost/restaurants', {
+mongoose.connect('mongodb://localhost:27017/restaurants', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
