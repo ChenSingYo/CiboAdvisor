@@ -11,15 +11,19 @@ CiboAdvisor - the restaurant list that includes several nice spots worth to visi
 1. Find restaurants located in Taipei.
 2. Search restaurant by name and it's description.
 3. Show info page when certain restaurant get clicked.
+4. Add new restaurant
+5. Edit Info of any restaurant
+6. Delete any restaurant
 
 ## Prerequisites
-
 
 Node.js
 
 Express
 
 Express-Handlebars
+
+Handlebars-Helpers
 
 ## **Getting Started**
 
@@ -66,3 +70,5 @@ Node.js 14.15.1
 Express 4.17.1
 
 Express-Handlebars 5.2.0
+
+Handlebars-Helpers 0.10

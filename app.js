@@ -54,12 +54,13 @@ app.get('/restaurants/:id', (req, res) => {
 
 // create new data
 app.get('/new', (req, res) => res.render('new'))
-app.post('/new', (req, res) => {
-  const restaurant = req.body
-  restaurantList.create(restaurant)
-    .then(() => res.redirect('/'))
-    .catch(error => console.error(error))
-})
+
+// app.post('/restaurants/new', (req, res) => {
+//   const restaurant = req.body
+//   restaurantList.create(restaurant)
+//     .then(() => res.redirect('/'))
+//     .catch(error => console.error(error))
+// })
 
 // route to edit page
 app.get('/restaurants/:id/edit', (req, res) => {
