@@ -23,17 +23,34 @@
         </span>
         &ensp;{{restaurant.phone}}
       </p>
-      <div class="d-inline-flex mt-5">
-        <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-success btn-sm mx-1" role="button"><i class="fas fa-edit"></i></a>
-        <form action="./restaurants/{{ this._id }}/delete" method="POST" class="">
-          <button type="Submit" class="btn btn-secondary btn-sm mx-1"><i class="fas fa-trash-alt"></i></button>
-        </form>
+      <div class="d-inline-flex mt-5 mb-3">
+        <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-success btn-sm mx-1" role="button"><i class="fas fa-edit fa-lg"></i></a>
+        <button type="button" class="btn btn-sm btn-secondary mx-1" data-toggle="modal" data-target="#deleteModal-{{restaurant._id}}"><i class="fas fa-trash-alt fa-lg"></i></button>
+        <a href="/" type="button" class="btn btn-primary btn-sm mx-1"><i class="fas fa-home fa-lg"></i></a>
       </div>
     </div>
     <div class="col-8 col-md-6 mb-5">
       <img class="rounded shadow ml-3"
         src="{{restaurant.image}}" alt="{{restaurant.name_en}}"
         style="max-width: 500px;">
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal-{{restaurant._id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <big class="modal-body">
+        Delete <strong>{{restaurant.name_en}}</strong> ？
+      </big>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger">Sure</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

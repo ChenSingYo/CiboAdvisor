@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2 mb-5">
-      <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST"  class="was-validated">
+      <form method="POST" action="/restaurants/{{restaurant._id}}" class="was-validated">
         <div class="row">
           <div class="col-md-5 form-group mb-3">
-            <label for="restaurant-name" class="text-muted font-weight-light">餐廳名稱</label>
-            <input class="form-control" type="text" name="name" id="restaurant-name" placeholder="" value="{{restaurant.name}}" required>
+            <label class="text-muted font-weight-light">餐廳名稱</label>
+            <input class="form-control" type="text" name="name" id="name" placeholder="" value="{{restaurant.name}}" required>
           </div>
           <div class="col-md-4 form-group mb-3">
             <label for="restaurant-name_en" class="text-muted font-weight-light">Name</label>
