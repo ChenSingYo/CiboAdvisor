@@ -54,11 +54,11 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <big class="modal-body">
-        Delete <strong>{{this.name_en}}</strong> ？
+        Delete <strong>{{this.name_en}} / {{this.name}}</strong>？
       </big>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST">
+        <form action="/restaurants/{{this._id}}/delete" method="POST">
           <button type="submit" class="btn btn-danger">Sure</button>
         </form>
       </div>

@@ -1,25 +1,22 @@
 /* eslint-disable camelcase */
-
 // use mongoose to connect mongodb
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/restaurants', {
+mongoose.connect('mongodb://localhost/restaurants', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 })
 
 // require packages used in the project
 const express = require('express')
-const bodyParser = require('body-parser');
 const app = express()
 const port = 3000
 // require express-handlebars here
 const exphbs = require('express-handlebars')
 // require data model
 const restaurantList = require('./models/restaurantModel.js')
-const jsonParser = bodyParser.json()
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-// use body-parser
+// use epxress-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
 // connect to mongodb
@@ -48,26 +45,6 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-// main page route after search
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  restaurantList.find()
-    .lean()
-    .then(restaurants => {
-      // search content by name, name_en, category, location, description
-      const getRestaurantsFromSearch = restaurants.filter(({ name, name_en, category, location, description }) => {
-        const searchingStr = [name, name_en, category, location, description].join('')
-        return new RegExp(keyword, 'ig').test(searchingStr)
-      })
-      if (getRestaurantsFromSearch.length === 0) {
-        res.render('notFound', { keyword: keyword })
-      } else {
-        res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
-      }
-    })
-    .catch(error => console.error(error))
-})
-
 // use params to get dynamic route, pass object to show.handlebars
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
@@ -89,9 +66,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 // edit data
 app.post('/restaurants/:id', (req, res) => {
   const id = req.params.id
-
-  const update =  JSON.parse( JSON.stringify(req.body)) ;
-  console.log(update);
+  const update = req.body
   restaurantList.findByIdAndUpdate(id, update, { new: true })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.error(error))
@@ -104,6 +79,26 @@ app.post('/restaurants/:id/delete', (req, res) => {
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
+})
+
+// main page route after search
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  restaurantList.find()
+    .lean()
+    .then(restaurants => {
+      // search content by name, name_en, category, location, description
+      const getRestaurantsFromSearch = restaurants.filter(({ name, name_en, category, location, description }) => {
+        const searchingStr = [name, name_en, category, location, description].join('')
+        return new RegExp(keyword, 'ig').test(searchingStr)
+      })
+      if (getRestaurantsFromSearch.length === 0) {
+        res.render('notFound', { keyword: keyword })
+      } else {
+        res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
+      }
+    })
+    .catch(error => console.error(error))
 })
 
 // start and listen on the Express server
