@@ -71,6 +71,25 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// route to edit page
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return restaurantList.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+// edit data
+app.put('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  const update = req.body
+  console.log(update)
+  restaurantList.findByIdAndUpdate(id, update, { new: true })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.error(error))
+})
+
 // start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)

@@ -1,0 +1,53 @@
+<h1 class="mt-3 restaurant-show-title text-warning">Editing: {{restaurant.name_en}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2 mb-5">
+      <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST"  class="was-validated">
+        <div class="row">
+          <div class="col-md-5 form-group mb-3">
+            <label for="restaurant-name" class="text-muted font-weight-light">餐廳名稱</label>
+            <input class="form-control" type="text" name="name" id="restaurant-name" placeholder="" value="{{restaurant.name}}" required>
+          </div>
+          <div class="col-md-4 form-group mb-3">
+            <label for="restaurant-name_en" class="text-muted font-weight-light">Name</label>
+            <input class="form-control" type="text" name="username" id="restaurant-name_en" placeholder="" value="{{restaurant.name_en}}" required>
+          </div>
+          <div class="col-md-3 form-group mb-3">
+            <label for="restaurant-category" class="text-muted font-weight-light">Category</label>
+            <input class="form-control" type="text" name="username" id="restaurant-category" placeholder="" value="{{restaurant.category}}" required>
+          </div>
+          <div class="col-md-6 form-group mb-3">
+            <label for="restaurant-address" class="text-muted font-weight-light">Address</label>
+            <input class="form-control" type="text" name="name" id="restaurant-address" placeholder="" value="{{restaurant.location}}" required>
+          </div>
+          <div class="col-md-4 form-group mb-3">
+            <label for="restaurant-phone" class="text-muted font-weight-light">Phone</label>
+            <input class="form-control" type="text" name="username" id="restaurant-phone" placeholder="" value="{{restaurant.phone}}" required>
+          </div>
+          <div class="col-md-2 form-group mb-3">
+            <label class="text-muted font-weight-light">Rating</label>
+            <input class="form-control" type="text" name="username" placeholder="" value="{{restaurant.rating}}" required>
+          </div>        
+          <div class="col-md-12 form-group mb-3" >
+            <label for="restaurant-about" class="text-muted font-weight-light">About</label>
+            <textarea class="form-control" rows="5" id="restaurant-about" placeholder="" required>{{restaurant.description}}</textarea>
+          </div>   
+          <div class="col-md-12 form-group mb-3">
+            <label for="restaurant-Image_Url" class="text-muted font-weight-light">Image Url</label>
+            <input class="form-control" type="text" name="username" id="restaurant-Image_Url" placeholder="" value="{{restaurant.image}}" required>
+          </div>
+          <div class="col-md-12 form-group mb-4">
+            <label for="restaurant-google_map" class="text-muted font-weight-light">Google Map Url</label>
+            <input class="form-control" type="text" name="username" id="restaurant-google_map" placeholder="" value="{{restaurant.google_map}}" required>
+          </div>
+          <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
+            <a href="/restaurants/{{restaurant._id}}" type="button" class="btn btn-outline-secondary">BACK</a>
+          </div>     
+          <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
+            <button type="submit" class="btn btn-outline-success">SAVE</button>
+          </div>          
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
