@@ -19,6 +19,9 @@ const restaurantList = require('./models/restaurantModel.js')
 const jsonParser = bodyParser.json()
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+// use body-parser
+app.use(express.urlencoded({ extended: true }))
+
 // connect to mongodb
 const db = mongoose.connection
 // check if get error from mongodb
@@ -84,7 +87,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // edit data
-app.post('/restaurants/:id',urlencodedParser, (req, res) => {
+app.post('/restaurants/:id', (req, res) => {
   const id = req.params.id
 
   const update =  JSON.parse( JSON.stringify(req.body)) ;
@@ -92,6 +95,15 @@ app.post('/restaurants/:id',urlencodedParser, (req, res) => {
   restaurantList.findByIdAndUpdate(id, update, { new: true })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.error(error))
+})
+
+// delete data
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return restaurantList.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 // start and listen on the Express server
