@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2 mb-5">
-      <form method="POST" action="/restaurants/{{restaurant._id}}" class="was-validated">
+      <form method="POST" action="/restaurants/{{restaurant._id}}" class="">
         <div class="row">
           <div class="col-md-5 form-group mb-3">
             <label class="text-muted font-weight-light">餐廳名稱</label>
@@ -38,11 +38,11 @@
           </div>
           <div class="col-md-4 form-group mb-3">
             <label for="restaurant-phone" class="text-muted font-weight-light">Phone</label>
-            <input class="form-control" type="text" name="phone" id="restaurant-phone" placeholder="" value="{{restaurant.phone}}" required>
+            <input class="form-control" type="tel" name="phone" id="restaurant-phone" placeholder="" value="{{restaurant.phone}}" required>
           </div>
           <div class="col-md-2 form-group mb-3">
             <label class="text-muted font-weight-light">Rating</label>
-            <input class="form-control" type="text" name="rating" placeholder="" value="{{restaurant.rating}}" required>
+            <input class="form-control" type="number" step="0.1" min="0" max="5" name="rating" placeholder="" value="{{restaurant.rating}}" required>
           </div>        
           <div class="col-md-12 form-group mb-3" >
             <label for="restaurant-about" class="text-muted font-weight-light">About</label>
@@ -50,11 +50,11 @@
           </div>   
           <div class="col-md-12 form-group mb-3">
             <label for="restaurant-Image_Url" class="text-muted font-weight-light">Image Url</label>
-            <input class="form-control" type="text" name="image" id="restaurant-Image_Url" placeholder="" value="{{restaurant.image}}" required>
+            <input class="form-control" type="url" name="image" id="restaurant-Image_Url" placeholder="" value="{{restaurant.image}}" required>
           </div>
           <div class="col-md-12 form-group mb-4">
             <label for="restaurant-google_map" class="text-muted font-weight-light">Google Map Url</label>
-            <input class="form-control" type="text" name="google_map" id="restaurant-google_map" placeholder="" value="{{restaurant.google_map}}" required>
+            <input class="form-control" type="url" name="google_map" id="restaurant-google_map" placeholder="" value="{{restaurant.google_map}}" required>
           </div>
           <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
             <a href="/restaurants/{{restaurant._id}}" type="button" class="btn btn-outline-secondary">BACK</a>
