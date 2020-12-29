@@ -7,6 +7,9 @@ const restaurantList = require('../../models/restaurantModel.js')
 const express = require('express')
 const router = express.Router()
 
+// create new data
+router.get('/new', (req, res) => { return res.render('new') })
+
 // use params to get dynamic route, pass object to show.handlebars
 router.get('/:id', (req, res) => {
   const id = req.params.id
@@ -16,10 +19,7 @@ router.get('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// create new data
-router.get('/new', (req, res) => { return res.render('new') })
-
-router.post('/new', (req, res) => {
+router.post('/', (req, res) => {
   const restaurant = req.body
   restaurantList.create(restaurant)
     .then(() => res.redirect('/'))
