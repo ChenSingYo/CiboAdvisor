@@ -53,25 +53,5 @@ router.delete('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// main page route after search
-router.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  restaurantList.find()
-    .lean()
-    .then(restaurants => {
-      // search content by name, name_en, category, location, description
-      const getRestaurantsFromSearch = restaurants.filter(({ name, name_en, category, location, description }) => {
-        const searchingStr = [name, name_en, category, location, description].join('')
-        return new RegExp(keyword, 'ig').test(searchingStr)
-      })
-      if (getRestaurantsFromSearch.length === 0) {
-        res.render('notFound', { keyword: keyword })
-      } else {
-        res.render('index', { restaurants: getRestaurantsFromSearch, keyword: keyword })
-      }
-    })
-    .catch(error => console.error(error))
-})
-
 // 匯出路由模組
 module.exports = router
