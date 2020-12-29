@@ -18,6 +18,11 @@ const restaurantList = require('./models/restaurantModel.js')
 // use epxress-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
+// 載入 method-override
+const methodOverride = require('method-override')
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
+
 // connect to mongodb
 const db = mongoose.connection
 // check mongodb's status
@@ -72,7 +77,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // edit data
-app.post('/restaurants/:id', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   const update = req.body
   restaurantList.findByIdAndUpdate(id, update, { new: true })
@@ -81,7 +86,7 @@ app.post('/restaurants/:id', (req, res) => {
 })
 
 // delete data
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return restaurantList.findById(id)
     .then(restaurant => restaurant.remove())

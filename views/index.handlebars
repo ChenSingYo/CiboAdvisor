@@ -12,9 +12,6 @@
           </div>
         </div>
       </form>
-        <a href="/new">
-          <button type="button" class="btn">Got New Spot?</button>
-        </a>
     </div>
   </div>
 </div>
@@ -61,10 +58,10 @@
       </big>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <form action="/restaurants/{{this._id}}/delete" method="POST">
+        <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-danger">Sure</button>
         </form>
-      </div>
+      </div>i
     </div>
   </div>
 </div>
