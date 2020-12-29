@@ -123,6 +123,50 @@ header {
   color: white;
 }
 
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2.5px solid #cc5c00;
+  padding: 5px;
+  margin-left: -2px;
+  height: 50px;
+  border-left: none;
+  border-radius: 0px 10px 10px 0px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color:darkslategray
+}
+
+.searchButton {
+  width: 40px;
+  height: 50px;
+  border: 2.5px solid#cc5c00;
+  border-right: none;
+  background-color: white;
+  color:#cc5c00;
+  text-align: center;
+  border-radius: 10px 0px 0px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 75%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
 @media screen and (max-width: 992px) {
   .card img{
     height: 160px;
