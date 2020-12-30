@@ -34,6 +34,13 @@ Clone repository to your local computer
 $ git clone https://github.com/ChenSingYo/CiboAdvisor.git
 ```
 
+create db
+
+```bash
+cd ~/mongodb/bin/
+[~/mongodb/bin] $ ./mongod --dbpath ~/mongodb-data
+```
+
 Install [npm](https://www.npmjs.com/) and execute
 
 ```bash
@@ -54,6 +61,7 @@ when everything works fine:
 
 ```
 Express is listening on localhost:3000
+mongodb connected!
 ```
 
 let 's check CiboAdvisor with your Browser
