@@ -10,9 +10,10 @@ CiboAdvisor - the restaurant list that includes several nice spots worth to visi
 1. Find restaurants located in Taipei.
 2. Search restaurant by name and it's description.
 3. Show info page when certain restaurant get clicked.
-4. Add new restaurant
-5. Edit Info of any restaurant
-6. Delete any restaurant
+4. Add new restaurant.
+5. Edit Info of any restaurant.
+6. Delete any restaurant.
+7. Sort and show restaurants by alphabet, rating, genre.
 
 ## Prerequisites
 
