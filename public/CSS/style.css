@@ -15,8 +15,8 @@ header {
   z-index: -1;
   margin: -5px;
   height: 360px;
-  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
-  background-size: cover;
+  /* background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
+  background-size: cover; */
   filter: blur(3px);
 }
 
@@ -131,29 +131,25 @@ header {
 
 .searchTerm {
   width: 100%;
-  border: 2.5px solid #cc5c00;
+  border: 2px solid brown;
   padding: 5px;
   margin-left: -2px;
   height: 50px;
   border-left: none;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 6px 6px 0px;
   outline: none;
-  color: #9DBFAF;
-}
-
-.searchTerm:focus{
-  color:darkslategray
+  color: dark
 }
 
 .searchButton {
   width: 40px;
   height: 50px;
-  border: 2.5px solid#cc5c00;
+  border: 2px solid brown;
   border-right: none;
   background-color: white;
-  color:#cc5c00;
+  color:brown;
   text-align: center;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 6px 0px 0px 6px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -162,7 +158,7 @@ header {
 .wrap{
   width: 30%;
   position: absolute;
-  top: 75%;
+  top: 86%;
   left: 15%;
   transform: translate(-50%, -50%);
 }

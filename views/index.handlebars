@@ -1,14 +1,16 @@
 
 <!-- search bar -->
 <div class="container search-bar dropdown d-flex justify-content-end">
-  <button type="button" class="btn btn-outline-warning dropdown-toggle mt-3" data-toggle="dropdown" style="border-color: brown; color: brown">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
-  </div>
+  <form action="/sort" method="GET" class="" >
+      <select class="btn btn-outline-light mt-4" id="sort" style="border-color: brown; color: brown" name="sort" onchange="submit()">
+        <option value="">⏳ order by.. </option>
+        <option value="name" {{#is sortBy "name"}} selected {{/is}}>A-Z</option>
+        <option value="-name" {{#is sortBy "-name"}} selected {{/is}}>Z-A</option>
+        <option value="category" {{#is sortBy "category"}} selected {{/is}}>Genre</option>
+        <option value="-rating" {{#is sortBy "-rating"}} selected {{/is}}>Rating</option>
+      </select>
+  </form>
+
   <div class="wrap">
     <form action="/search" method="GET">
     <div class="search">
