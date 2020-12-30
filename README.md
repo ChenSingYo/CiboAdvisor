@@ -82,3 +82,6 @@ Express-Handlebars 5.2.0
 Handlebars-Helpers 0.10
 
 Mongoose v5.11.8
+
+## **Contributor**
+SingYo

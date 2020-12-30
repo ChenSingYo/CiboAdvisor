@@ -1,6 +1,6 @@
-<h1 class="mt-3 restaurant-show-title text-warning">Editing: {{restaurant.name_en}}</h1>
 <div class="container">
   <div class="row">
+    <h1 class="restaurant-show-title">Editing: {{restaurant.name_en}}</h1>
     <div class="col-8 offset-2 mb-5">
       <form method="POST" action="/restaurants/{{restaurant._id}}?_method=PUT" class="">
         <div class="row">
@@ -55,10 +55,10 @@
             <label for="restaurant-google_map" class="text-muted font-weight-light">Google Map Url</label>
             <input class="form-control" type="url" name="google_map" id="restaurant-google_map" placeholder="" value="{{restaurant.google_map}}" required>
           </div>
-          <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
+          <div class="col-md-2 form-group mb-5 d-flex justify-content-between">
             <a href="/restaurants/{{restaurant._id}}" type="button" class="btn btn-outline-secondary">BACK</a>
           </div>     
-          <div class="col-md-1 form-group mb-5 d-flex justify-content-between">
+          <div class="col-md-1 form-group mb-5 d-flex justify-content-end">
             <button type="submit" class="btn btn-outline-success">SAVE</button>
           </div>          
         </div>

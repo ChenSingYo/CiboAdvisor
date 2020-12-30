@@ -98,11 +98,10 @@ header {
 
 .restaurant-show-title {
   position: relative;
-  top: -100px;
-  color: white;
+  color: rgb(128, 128, 128);
+  margin-bottom: 2rem;
   text-align: center;
-  font-size: 3rem;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
 }
 
 .social-icon {
@@ -130,7 +129,7 @@ header {
 
 .searchTerm {
   width: 100%;
-  border: 2px solid brown;
+  border: 1px solid brown;
   padding: 5px;
   margin-left: -2px;
   height: 50px;
@@ -143,7 +142,7 @@ header {
 .searchButton {
   width: 40px;
   height: 50px;
-  border: 2px solid brown;
+  border: 1px solid brown;
   border-right: none;
   background-color: white;
   color:brown;
